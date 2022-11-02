@@ -1,1 +1,1 @@
-web:npm run startdev
+web:npm start
