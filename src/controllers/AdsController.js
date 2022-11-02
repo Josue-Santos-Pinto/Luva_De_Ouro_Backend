@@ -49,7 +49,6 @@ module.exports = {
         }
 
         if(price) { // R$ 8.000,35 = 8000.35
-            price = price.replace('.', '').replace(',', '.').replace('R$ ', '');
             price = parseFloat(price);
         } else {
             price = 0;
