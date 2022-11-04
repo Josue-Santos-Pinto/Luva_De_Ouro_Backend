@@ -47,6 +47,12 @@ module.exports = {
         if(data.name) {
             updates.name = data.name;
         }
+        if(data.celular) {
+            updates.celular = data.celular;
+        }
+        if(data.cep) {
+            updates.cep = data.cep;
+        }
 
         if(data.email) {
             const emailCheck = await User.findOne({email: data.email});
