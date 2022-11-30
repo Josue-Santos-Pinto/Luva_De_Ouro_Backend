@@ -34,6 +34,72 @@ module.exports = {
             ads: adList
         });
     },
+    dashboard: async (req,res) => {
+        let token = req.query.token;
+
+        const user = await User.findOne({token});
+        const ads = await Ad.find({idUser: user._id.toString()});
+
+        let adList = []
+        let totalView = 0
+        let disableAdds = 0
+        let activeAdds = 0
+        let totalViews = 0
+        let higherViewerAdd = 0
+        let higherView = []
+        
+
+        for(let i in ads) {
+            adList.push({ 
+                id: ads[i]._id,
+                title: ads[i].title,
+                images: ads[i].images,
+                description: ads[i].description,
+                status: ads[i].status,
+                price: ads[i].price,
+                views: ads[i].views
+                
+             });
+             if(ads[i].status == 'false' ){
+                disableAdds += 1
+             }
+             if(ads[i].status == 'true' ){
+                activeAdds += 1
+             }
+             if(ads[i].views > 0 ){
+                totalViews += ads[i].views
+             }
+             
+        }
+
+        
+
+        for(let i in adList){
+            higherView.push(
+                 adList[i].views
+            )
+            higherView.sort(function(a, b){return b-a})
+        }
+
+        for(let i in adList){
+            if( adList[i].views == higherView[0]){
+                higherViewerAdd = adList[i]
+            }
+        }
+        
+        console.log(higherView)
+        
+        
+
+        res.json({
+            ads: adList,
+            total: adList.length,
+            disableAdds,
+            activeAdds,
+            totalViews,
+            higherViewerAdd
+        })
+    },
     editAction: async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
