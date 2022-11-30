@@ -143,6 +143,8 @@ module.exports = {
                 title: adsData[i].title,
                 price: adsData[i].price,
                 priceNegotiable: adsData[i].priceNegotiable,
+                views: adsData[i].views,
+                date: adsData[i].dateCreated,
                 image
             });
         }
