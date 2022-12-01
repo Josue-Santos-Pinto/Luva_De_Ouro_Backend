@@ -87,7 +87,7 @@ module.exports = {
             }
         }
         
-        console.log(higherView)
+        
         
         
 

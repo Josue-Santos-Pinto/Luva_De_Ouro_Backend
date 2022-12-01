@@ -215,6 +215,7 @@ module.exports = {
             description: ad.description,
             dateCreated: ad.dateCreated,
             views: ad.views,
+            status: ad.status,
             images,
             category,
             userInfo: {
