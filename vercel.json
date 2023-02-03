@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "./src/validators/routes.js",
+            "src": "./.env",
             "use":"@vercel/node"
         }
     ],
